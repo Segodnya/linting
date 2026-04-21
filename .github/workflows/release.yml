@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # NPM_TOKEN must be an Automation token (npmjs.com → Access Tokens →
+      # Generate New Token → Automation). Publish/Read&Publish tokens that
+      # require 2FA OTP cannot be used in CI — npm publish will fail with EOTP.
+      # Scope: must have publish rights for @kommo-crm.
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Skip husky install during `yarn install` — git hooks are useless in CI
+      # and may break on minimal runners.
+      HUSKY: 0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+          registry-url: https://registry.npmjs.org
+
+      - name: Verify tag matches package.json version
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::package.json version ($PKG_VERSION) does not match tag ($TAG_VERSION)"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Verify (lint + knip + typecheck + build + coverage)
+        run: make verify
+
+      - name: Publish to npm
+        run: npm publish --access public
+
+      - name: Create GitHub Release
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes

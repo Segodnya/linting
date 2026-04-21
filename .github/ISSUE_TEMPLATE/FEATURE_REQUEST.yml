@@ -1,0 +1,53 @@
+name: Feature request
+description: Suggest a new rule, preset, option, or improvement to @kommo-crm/linting
+labels: ['Feature request', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🌟 Feature requests that are not yet planned will be closed. We then use the issue’s :+1: upvotes to track and set priorities.
+        See the [contribution guidelines](https://github.com/kommo-crm/linting/blob/main/.github/CONTRIBUTING.md) for more information.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Provide a short summary of the feature (e.g. "enable `@typescript-eslint/no-floating-promises` in the `typescript` preset").
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: |
+        Explain the benefit of this feature. Useful things to include:
+        - the class of bug or smell it catches,
+        - example code that should now be reported (or no longer reported),
+        - links to upstream rule docs / RFCs.
+    validations:
+      required: true
+  - type: dropdown
+    id: target
+    attributes:
+      label: Target
+      multiple: true
+      options:
+        - base preset
+        - typescript preset
+        - react preset
+        - plugin (new custom rule)
+        - new preset (please describe in Summary)
+        - legacy entry (.eslintrc)
+        - types
+        - tooling / CI / docs
+    validations:
+      required: true
+  - type: dropdown
+    id: bump
+    attributes:
+      label: Expected version bump
+      description: See semver guidance in CONTRIBUTING.md.
+      options:
+        - patch
+        - minor
+        - major
+        - not sure

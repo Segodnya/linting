@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "ignoreDeprecations": "5.0",
+    "allowJs": false,
+    "types": ["node"]
+  },
+  "include": [
+    "src/**/*",
+    "__tests__/**/*",
+    "*.ts",
+    "*.mts",
+    "*.mjs",
+    "scripts/**/*"
+  ],
+  "exclude": [
+    "__tests__/eslint/fixtures/**/*",
+    "dist/**/*",
+    "node_modules/**/*"
+  ]
+}

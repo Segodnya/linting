@@ -1,0 +1,2032 @@
+[
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 4,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 6,
+    "column": 3,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "no-unreachable",
+    "line": 6,
+    "column": 3,
+    "severity": 2,
+    "messageId": "unreachableCode"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 12,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "array-callback-return",
+    "line": 12,
+    "column": 33,
+    "severity": 2,
+    "messageId": "expectedAtEnd"
+  },
+  {
+    "ruleId": "no-constant-condition",
+    "line": 19,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "curly",
+    "line": 19,
+    "column": 11,
+    "severity": 2,
+    "messageId": "missingCurlyAfterCondition"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 19,
+    "column": 11,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 24,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "dot-location",
+    "line": 24,
+    "column": 22,
+    "severity": 2,
+    "messageId": "expectedDotBeforeProperty"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 30,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "dot-notation",
+    "line": 30,
+    "column": 29,
+    "severity": 2,
+    "messageId": "useDot"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-use-before-define",
+    "line": 33,
+    "column": 5,
+    "severity": 2,
+    "messageId": "noUseBeforeDefine"
+  },
+  {
+    "ruleId": "eqeqeq",
+    "line": 33,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-use-before-define",
+    "line": 33,
+    "column": 10,
+    "severity": 2,
+    "messageId": "noUseBeforeDefine"
+  },
+  {
+    "ruleId": "no-empty",
+    "line": 33,
+    "column": 13,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@stylistic/padding-line-between-statements",
+    "line": 33,
+    "column": 15,
+    "severity": 2,
+    "messageId": "expectedBlankLine"
+  },
+  {
+    "ruleId": "no-alert",
+    "line": 36,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 39,
+    "column": 10,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-caller",
+    "line": 44,
+    "column": 3,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 48,
+    "column": 1,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 53,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-else-return",
+    "line": 56,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-empty-function",
+    "line": 62,
+    "column": 18,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-eq-null",
+    "line": 65,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-eval",
+    "line": 70,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-extend-native",
+    "line": 73,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@stylistic/quotes",
+    "line": 73,
+    "column": 40,
+    "severity": 2,
+    "messageId": "wrongQuotes"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 76,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-extra-bind",
+    "line": 78,
+    "column": 3,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-use-before-define",
+    "line": 81,
+    "column": 11,
+    "severity": 2,
+    "messageId": "noUseBeforeDefine"
+  },
+  {
+    "ruleId": "no-extra-label",
+    "line": 82,
+    "column": 9,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 88,
+    "column": 5,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "no-fallthrough",
+    "line": 90,
+    "column": 3,
+    "severity": 2,
+    "messageId": "case"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 91,
+    "column": 7,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 95,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-floating-decimal",
+    "line": 95,
+    "column": 13,
+    "severity": 2,
+    "messageId": "leading"
+  },
+  {
+    "ruleId": "no-implied-eval",
+    "line": 98,
+    "column": 1,
+    "severity": 2,
+    "messageId": "impliedEval"
+  },
+  {
+    "ruleId": "no-empty",
+    "line": 101,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-lone-blocks",
+    "line": 101,
+    "column": 1,
+    "severity": 2,
+    "messageId": "redundantBlock"
+  },
+  {
+    "ruleId": "@stylistic/padding-line-between-statements",
+    "line": 101,
+    "column": 3,
+    "severity": 2,
+    "messageId": "expectedBlankLine"
+  },
+  {
+    "ruleId": "no-loop-func",
+    "line": 105,
+    "column": 14,
+    "severity": 2,
+    "messageId": "unsafeRefs"
+  },
+  {
+    "ruleId": "no-multi-spaces",
+    "line": 111,
+    "column": 6,
+    "severity": 2,
+    "messageId": "multipleSpaces"
+  },
+  {
+    "ruleId": "no-multi-spaces",
+    "line": 111,
+    "column": 9,
+    "severity": 2,
+    "messageId": "multipleSpaces"
+  },
+  {
+    "ruleId": "no-multi-spaces",
+    "line": 111,
+    "column": 12,
+    "severity": 2,
+    "messageId": "multipleSpaces"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 114,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-multi-str",
+    "line": 114,
+    "column": 13,
+    "severity": 2,
+    "messageId": "multilineString"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 118,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-new-func",
+    "line": 118,
+    "column": 14,
+    "severity": 2,
+    "messageId": "noFunctionConstructor"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 121,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-new-wrappers",
+    "line": 121,
+    "column": 22,
+    "severity": 2,
+    "messageId": "noConstructor"
+  },
+  {
+    "ruleId": "@stylistic/quotes",
+    "line": 121,
+    "column": 33,
+    "severity": 2,
+    "messageId": "wrongQuotes"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 122,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-new-wrappers",
+    "line": 122,
+    "column": 22,
+    "severity": 2,
+    "messageId": "noConstructor"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 123,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-new-wrappers",
+    "line": 123,
+    "column": 23,
+    "severity": 2,
+    "messageId": "noConstructor"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 135,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-proto",
+    "line": 135,
+    "column": 15,
+    "severity": 2,
+    "messageId": "unexpectedProto"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 135,
+    "column": 15,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 138,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/quotes",
+    "line": 138,
+    "column": 29,
+    "severity": 2,
+    "messageId": "wrongQuotes"
+  },
+  {
+    "ruleId": "no-script-url",
+    "line": 138,
+    "column": 29,
+    "severity": 2,
+    "messageId": "unexpectedScriptURL"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 141,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-self-compare",
+    "line": 143,
+    "column": 5,
+    "severity": 2,
+    "messageId": "comparingToSelf"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 148,
+    "column": 6,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "no-console",
+    "line": 148,
+    "column": 44,
+    "severity": 2,
+    "messageId": "limited"
+  },
+  {
+    "ruleId": "no-sequences",
+    "line": 148,
+    "column": 66,
+    "severity": 2,
+    "messageId": "unexpectedCommaExpression"
+  },
+  {
+    "ruleId": "no-implicit-coercion",
+    "line": 148,
+    "column": 68,
+    "severity": 2,
+    "messageId": "implicitCoercion"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 148,
+    "column": 70,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-throw-literal",
+    "line": 152,
+    "column": 5,
+    "severity": 2,
+    "messageId": "object"
+  },
+  {
+    "ruleId": "no-unused-expressions",
+    "line": 156,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unusedExpression"
+  },
+  {
+    "ruleId": "@stylistic/semi",
+    "line": 156,
+    "column": 2,
+    "severity": 2,
+    "messageId": "missingSemi"
+  },
+  {
+    "ruleId": "no-useless-call",
+    "line": 159,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unnecessaryCall"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 162,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 162,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-useless-concat",
+    "line": 162,
+    "column": 25,
+    "severity": 2,
+    "messageId": "unexpectedConcat"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 165,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 165,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-useless-escape",
+    "line": 165,
+    "column": 19,
+    "severity": 2,
+    "messageId": "unnecessaryEscape"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 168,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 168,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-useless-return",
+    "line": 168,
+    "column": 30,
+    "severity": 2,
+    "messageId": "unnecessaryReturn"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 171,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 171,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "radix",
+    "line": 171,
+    "column": 27,
+    "severity": 2,
+    "messageId": "redundantRadix"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 174,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 174,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "wrap-iife",
+    "line": 174,
+    "column": 15,
+    "severity": 2,
+    "messageId": "wrapInvocation"
+  },
+  {
+    "ruleId": "block-spacing",
+    "line": 174,
+    "column": 45,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "@stylistic/quotes",
+    "line": 177,
+    "column": 5,
+    "severity": 2,
+    "messageId": "wrongQuotes"
+  },
+  {
+    "ruleId": "yoda",
+    "line": 177,
+    "column": 5,
+    "severity": 2,
+    "messageId": "expected"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 177,
+    "column": 15,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 182,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/padding-line-between-statements",
+    "line": 183,
+    "column": 1,
+    "severity": 2,
+    "messageId": "expectedBlankLine"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-shadow",
+    "line": 184,
+    "column": 11,
+    "severity": 2,
+    "messageId": "noShadow"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 184,
+    "column": 11,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 189,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-shadow-restricted-names",
+    "line": 189,
+    "column": 10,
+    "severity": 2,
+    "messageId": "shadowingRestrictedName"
+  },
+  {
+    "ruleId": "@stylistic/space-before-blocks",
+    "line": 189,
+    "column": 15,
+    "severity": 2,
+    "messageId": "missingSpace"
+  },
+  {
+    "ruleId": "no-empty-function",
+    "line": 189,
+    "column": 15,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-undef-init",
+    "line": 192,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unnecessaryUndefinedInit"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 192,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 195,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 195,
+    "column": 20,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 200,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-constant-binary-expression",
+    "line": 200,
+    "column": 15,
+    "severity": 2,
+    "messageId": "constantShortCircuit"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-use-before-define",
+    "line": 203,
+    "column": 14,
+    "severity": 2,
+    "messageId": "noUseBeforeDefine"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-redeclare",
+    "line": 207,
+    "column": 5,
+    "severity": 2,
+    "messageId": "redeclared"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-redeclare",
+    "line": 208,
+    "column": 5,
+    "severity": 2,
+    "messageId": "redeclared"
+  },
+  {
+    "ruleId": "no-var",
+    "line": 211,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpectedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 211,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 214,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 214,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 217,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "brace-style",
+    "line": 218,
+    "column": 1,
+    "severity": 2,
+    "messageId": "nextLineOpen"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 223,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "block-spacing",
+    "line": 223,
+    "column": 25,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "block-spacing",
+    "line": 223,
+    "column": 38,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 227,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 227,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "comma-dangle",
+    "line": 227,
+    "column": 24,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 230,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 230,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/comma-spacing",
+    "line": 230,
+    "column": 18,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@stylistic/comma-spacing",
+    "line": 230,
+    "column": 18,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 233,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 233,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/comma-style",
+    "line": 234,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpectedLineBeforeAndAfterComma"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 235,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 235,
+    "column": 1,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 238,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 239,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 239,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/computed-property-spacing",
+    "line": 239,
+    "column": 30,
+    "severity": 2,
+    "messageId": "unexpectedSpaceAfter"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 242,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 242,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-redeclare",
+    "line": 248,
+    "column": 5,
+    "severity": 2,
+    "messageId": "redeclared"
+  },
+  {
+    "ruleId": "func-name-matching",
+    "line": 248,
+    "column": 5,
+    "severity": 2,
+    "messageId": "matchVariable"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-shadow",
+    "line": 248,
+    "column": 20,
+    "severity": 2,
+    "messageId": "noShadow"
+  },
+  {
+    "ruleId": "no-empty-function",
+    "line": 248,
+    "column": 26,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 251,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "id-length",
+    "line": 251,
+    "column": 7,
+    "severity": 2,
+    "messageId": "tooLong"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 254,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 254,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/key-spacing",
+    "line": 254,
+    "column": 21,
+    "severity": 2,
+    "messageId": "extraKey"
+  },
+  {
+    "ruleId": "@stylistic/keyword-spacing",
+    "line": 257,
+    "column": 1,
+    "severity": 2,
+    "messageId": "expectedAfter"
+  },
+  {
+    "ruleId": "@stylistic/keyword-spacing",
+    "line": 259,
+    "column": 2,
+    "severity": 2,
+    "messageId": "expectedBefore"
+  },
+  {
+    "ruleId": "@stylistic/keyword-spacing",
+    "line": 261,
+    "column": 2,
+    "severity": 2,
+    "messageId": "expectedBefore"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-redeclare",
+    "line": 266,
+    "column": 10,
+    "severity": 2,
+    "messageId": "redeclared"
+  },
+  {
+    "ruleId": "max-depth",
+    "line": 271,
+    "column": 21,
+    "severity": 2,
+    "messageId": "tooDeeply"
+  },
+  {
+    "ruleId": "max-len",
+    "line": 280,
+    "column": 1,
+    "severity": 2,
+    "messageId": "maxComment"
+  },
+  {
+    "ruleId": "max-nested-callbacks",
+    "line": 286,
+    "column": 17,
+    "severity": 2,
+    "messageId": "exceed"
+  },
+  {
+    "ruleId": "max-params",
+    "line": 294,
+    "column": 1,
+    "severity": 2,
+    "messageId": "exceed"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-shadow",
+    "line": 294,
+    "column": 16,
+    "severity": 2,
+    "messageId": "noShadow"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 294,
+    "column": 16,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 294,
+    "column": 21,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 294,
+    "column": 26,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 294,
+    "column": 31,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 294,
+    "column": 36,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 294,
+    "column": 41,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 299,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 299,
+    "column": 14,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "max-statements-per-line",
+    "line": 299,
+    "column": 19,
+    "severity": 2,
+    "messageId": "exceed"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 299,
+    "column": 23,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/semi",
+    "line": 299,
+    "column": 26,
+    "severity": 2,
+    "messageId": "missingSemi"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 302,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 302,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-use-before-define",
+    "line": 302,
+    "column": 18,
+    "severity": 2,
+    "messageId": "noUseBeforeDefine"
+  },
+  {
+    "ruleId": "new-cap",
+    "line": 302,
+    "column": 18,
+    "severity": 2,
+    "messageId": "lower"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 305,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "new-parens",
+    "line": 305,
+    "column": 14,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 305,
+    "column": 18,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-array-constructor",
+    "line": 308,
+    "column": 1,
+    "severity": 2,
+    "messageId": "useLiteral"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 311,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 311,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-bitwise",
+    "line": 311,
+    "column": 19,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 311,
+    "column": 19,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 311,
+    "column": 23,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 314,
+    "column": 5,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-lonely-if",
+    "line": 317,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unexpectedLonelyIf"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 317,
+    "column": 9,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 323,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-tabs",
+    "line": 324,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpectedTab"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-shadow",
+    "line": 324,
+    "column": 8,
+    "severity": 2,
+    "messageId": "noShadow"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 324,
+    "column": 8,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/no-mixed-spaces-and-tabs",
+    "line": 325,
+    "column": 1,
+    "severity": 2,
+    "messageId": "mixedSpacesAndTabs"
+  },
+  {
+    "ruleId": "no-tabs",
+    "line": 325,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpectedTab"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 325,
+    "column": 6,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 329,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/no-multiple-empty-lines",
+    "line": 332,
+    "column": 1,
+    "severity": 2,
+    "messageId": "consecutiveBlank"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 334,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-negated-condition",
+    "line": 337,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpectedNegated"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 344,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 344,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-new-object",
+    "line": 344,
+    "column": 16,
+    "severity": 2,
+    "messageId": "preferLiteral"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 347,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 347,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-tabs",
+    "line": 347,
+    "column": 10,
+    "severity": 2,
+    "messageId": "unexpectedTab"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 350,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 350,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-nested-ternary",
+    "line": 350,
+    "column": 13,
+    "severity": 2,
+    "messageId": "noNestedTernary"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 350,
+    "column": 25,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 350,
+    "column": 33,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 350,
+    "column": 39,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 350,
+    "column": 46,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 353,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 356,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 356,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-unneeded-ternary",
+    "line": 356,
+    "column": 22,
+    "severity": 2,
+    "messageId": "unnecessaryConditionalExpression"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 359,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 359,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/no-whitespace-before-property",
+    "line": 359,
+    "column": 18,
+    "severity": 2,
+    "messageId": "unexpectedWhitespace"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 362,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 362,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/object-curly-spacing",
+    "line": 362,
+    "column": 15,
+    "severity": 2,
+    "messageId": "requireSpaceAfter"
+  },
+  {
+    "ruleId": "@stylistic/object-curly-spacing",
+    "line": 362,
+    "column": 26,
+    "severity": 2,
+    "messageId": "requireSpaceBefore"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 365,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 366,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 366,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/one-var-declaration-per-line",
+    "line": 366,
+    "column": 12,
+    "severity": 2,
+    "messageId": "expectVarOnNewline"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 366,
+    "column": 12,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-const-assign",
+    "line": 369,
+    "column": 1,
+    "severity": 2,
+    "messageId": "const"
+  },
+  {
+    "ruleId": "operator-assignment",
+    "line": 369,
+    "column": 1,
+    "severity": 2,
+    "messageId": "replaced"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 369,
+    "column": 5,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@stylistic/operator-linebreak",
+    "line": 373,
+    "column": 5,
+    "severity": 2,
+    "messageId": "operatorAtEnd"
+  },
+  {
+    "ruleId": "@stylistic/padded-blocks",
+    "line": 378,
+    "column": 10,
+    "severity": 2,
+    "messageId": "neverPadBlock"
+  },
+  {
+    "ruleId": "@stylistic/padded-blocks",
+    "line": 380,
+    "column": 9,
+    "severity": 2,
+    "messageId": "neverPadBlock"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 385,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/padding-line-between-statements",
+    "line": 386,
+    "column": 1,
+    "severity": 2,
+    "messageId": "expectedBlankLine"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-redeclare",
+    "line": 386,
+    "column": 10,
+    "severity": 2,
+    "messageId": "redeclared"
+  },
+  {
+    "ruleId": "@stylistic/padding-line-between-statements",
+    "line": 388,
+    "column": 5,
+    "severity": 2,
+    "messageId": "expectedBlankLine"
+  },
+  {
+    "ruleId": "no-useless-return",
+    "line": 388,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unnecessaryReturn"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 392,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 392,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/quote-props",
+    "line": 393,
+    "column": 5,
+    "severity": 2,
+    "messageId": "inconsistentlyQuotedProperty"
+  },
+  {
+    "ruleId": "@stylistic/quotes",
+    "line": 393,
+    "column": 10,
+    "severity": 2,
+    "messageId": "wrongQuotes"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 399,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/quotes",
+    "line": 399,
+    "column": 17,
+    "severity": 2,
+    "messageId": "wrongQuotes"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 402,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 402,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/semi",
+    "line": 402,
+    "column": 22,
+    "severity": 2,
+    "messageId": "missingSemi"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 405,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 405,
+    "column": 5,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "@stylistic/semi-spacing",
+    "line": 405,
+    "column": 25,
+    "severity": 2,
+    "messageId": "unexpectedWhitespaceBefore"
+  },
+  {
+    "ruleId": "@stylistic/semi-style",
+    "line": 409,
+    "column": 1,
+    "severity": 2,
+    "messageId": "expectedSemiColon"
+  },
+  {
+    "ruleId": "@stylistic/space-before-blocks",
+    "line": 412,
+    "column": 13,
+    "severity": 2,
+    "messageId": "missingSpace"
+  },
+  {
+    "ruleId": "block-spacing",
+    "line": 412,
+    "column": 13,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "@stylistic/semi",
+    "line": 412,
+    "column": 19,
+    "severity": 2,
+    "messageId": "missingSemi"
+  },
+  {
+    "ruleId": "block-spacing",
+    "line": 412,
+    "column": 19,
+    "severity": 2,
+    "messageId": "missing"
+  },
+  {
+    "ruleId": "@stylistic/space-infix-ops",
+    "line": 418,
+    "column": 12,
+    "severity": 2,
+    "messageId": "missingSpace"
+  },
+  {
+    "ruleId": "@stylistic/semi",
+    "line": 418,
+    "column": 14,
+    "severity": 2,
+    "messageId": "missingSemi"
+  },
+  {
+    "ruleId": "@stylistic/space-unary-ops",
+    "line": 421,
+    "column": 1,
+    "severity": 2,
+    "messageId": "unexpectedAfter"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 421,
+    "column": 4,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@stylistic/spaced-comment",
+    "line": 424,
+    "column": 1,
+    "severity": 2,
+    "messageId": "expectedSpaceAfter"
+  },
+  {
+    "ruleId": "@stylistic/switch-colon-spacing",
+    "line": 428,
+    "column": 12,
+    "severity": 2,
+    "messageId": "unexpectedBefore"
+  },
+  {
+    "ruleId": "@stylistic/switch-colon-spacing",
+    "line": 429,
+    "column": 13,
+    "severity": 2,
+    "messageId": "unexpectedBefore"
+  },
+  {
+    "ruleId": "no-case-declarations",
+    "line": 437,
+    "column": 9,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-shadow",
+    "line": 437,
+    "column": 13,
+    "severity": 2,
+    "messageId": "noShadow"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 437,
+    "column": 13,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "prefer-const",
+    "line": 437,
+    "column": 13,
+    "severity": 2,
+    "messageId": "useConst"
+  },
+  {
+    "ruleId": "no-case-declarations",
+    "line": 441,
+    "column": 9,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 441,
+    "column": 15,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-case-declarations",
+    "line": 445,
+    "column": 9,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-shadow",
+    "line": 445,
+    "column": 18,
+    "severity": 2,
+    "messageId": "noShadow"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 445,
+    "column": 18,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-empty-function",
+    "line": 445,
+    "column": 22,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "no-case-declarations",
+    "line": 449,
+    "column": 9,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 449,
+    "column": 15,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-constant-condition",
+    "line": 453,
+    "column": 5,
+    "severity": 2,
+    "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/naming-convention",
+    "line": 458,
+    "column": 7,
+    "severity": 2,
+    "messageId": "doesNotMatchFormat"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 458,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 461,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 464,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 469,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "arrow-body-style",
+    "line": 469,
+    "column": 30,
+    "severity": 2,
+    "messageId": "expectedBlock"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 472,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 472,
+    "column": 38,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 472,
+    "column": 61,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 475,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 475,
+    "column": 32,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 476,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-undef",
+    "line": 476,
+    "column": 31,
+    "severity": 2,
+    "messageId": "undef"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 482,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 482,
+    "column": 29,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 487,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-implicit-coercion",
+    "line": 487,
+    "column": 35,
+    "severity": 2,
+    "messageId": "implicitCoercion"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 488,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-implicit-coercion",
+    "line": 488,
+    "column": 34,
+    "severity": 2,
+    "messageId": "implicitCoercion"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 489,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "no-implicit-coercion",
+    "line": 489,
+    "column": 34,
+    "severity": 2,
+    "messageId": "implicitCoercion"
+  }
+]
