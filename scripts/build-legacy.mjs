@@ -1,3 +1,21 @@
+/**
+ * Codegen step — intentionally NOT part of tsup.
+ *
+ * tsup transpiles source files into output formats; it cannot execute the
+ * resolved flat config and serialize the result. This script does exactly that:
+ * it imports the built presets, runs them, harvests only their `rules`, drops
+ * ESLint-9-only entries, and emits a static .eslintrc for ESLint 8 consumers.
+ *
+ * The emitted file references plugins by string name (not instances) so ESLint 8
+ * resolves them from the consumer's own node_modules via peerDeps — which is why
+ * we write a derived file here with fs/promises rather than letting tsup do it.
+ *
+ * Why not even tsup's `onSuccess` hook? With `dts: true`, `onSuccess` fires after
+ * the JS build but races with the separate DTS worker and tsup's clean step: the
+ * DTS phase wipes `dist` after assets are copied, so files written from the hook
+ * get clobbered. Post-build steps must run strictly AFTER tsup exits — hence the
+ * `tsup && node scripts/...` chain in package.json instead of an `onSuccess` hook.
+ */
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
