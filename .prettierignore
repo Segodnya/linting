@@ -1,6 +1,5 @@
 dist
 node_modules
-.yarn
-yarn.lock
+pnpm-lock.yaml
 coverage
-__tests__/eslint/fixtures
+__tests__/fixtures

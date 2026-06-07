@@ -1,2 +1,2 @@
-yarn lint-staged
-yarn knip
+pnpm lint-staged
+pnpm knip

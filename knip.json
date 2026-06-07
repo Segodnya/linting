@@ -1,7 +1,0 @@
-{
-  "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": ["scripts/*.mjs", "__tests__/**/*.test.ts"],
-  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.mjs", "__tests__/**/*.ts"],
-  "ignore": ["__tests__/eslint/fixtures/**"],
-  "ignoreDependencies": ["@types/react"]
-}

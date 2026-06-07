@@ -8,11 +8,11 @@ We expect all participants to read our [code of conduct](./CODE_OF_CONDUCT.md) t
 
 ## Open development
 
-`@kommo-crm/linting` is an umbrella package with subpath exports for different linters (`./eslint` today; `./stylelint` and others planned). All work happens directly on GitHub. Both team members and external contributors send pull requests which go through the same review process.
+`@kommo-crm/eslint-config` is the ESLint configuration package in the Kommo linting monorepo (more linters, e.g. a Stylelint config, will ship as separate packages). All work happens directly on GitHub. Both team members and external contributors send pull requests which go through the same review process.
 
 ## Semantic versioning
 
-`@kommo-crm/linting` follows semantic versioning, with a special policy for the `0.x` beta phase (see [Versioning during 0.x](#versioning-during-0x) below). After `1.0.0`, we release [patch versions for bug fixes](#patch), [minor versions for new features](#minor), and [major versions for breaking changes](#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
+`@kommo-crm/eslint-config` follows semantic versioning, with a special policy for the `0.x` beta phase (see [Versioning during 0.x](#versioning-during-0x) below). After `1.0.0`, we release [patch versions for bug fixes](#patch), [minor versions for new features](#minor), and [major versions for breaking changes](#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
 
 The following sections detail what kinds of changes result in each of major, minor, and patch version bumps **after 1.0.0**:
 
@@ -23,7 +23,7 @@ The following sections detail what kinds of changes result in each of major, min
 - Removal of a built-in rule from a preset
 - Bumping the minimum supported version of a peer dependency (`eslint`, `typescript`)
 - Bumping the minimum supported Node.js version
-- Breaking change to the public TypeScript types (`@kommo-crm/linting/eslint/types`)
+- Breaking change to the public TypeScript types (`@kommo-crm/eslint-config/types`)
 - Renaming or removing a preset option
 
 ### Minor
@@ -36,7 +36,7 @@ The following sections detail what kinds of changes result in each of major, min
 
 ### Patch
 
-- Bug fix in a custom rule under `src/eslint/plugin/rules/`
+- Bug fix in a custom rule under `packages/eslint-config/src/plugin/rules/`
 - Loosening a rule severity (e.g. `error` → `warn`)
 - Documentation, README, or CHANGELOG fixes
 - Internal refactor that does not change the rule output (verified by snapshot tests)
@@ -56,7 +56,7 @@ Bump policy in 0.x:
 - `0.x.0` — new rules (`warn` or `error`), new presets, API changes (including breaking).
 - `0.x.y` — bugfix, severity decrease (`error` → `warn`).
 
-`1.0.0` is cut once the ESLint part stabilises — when the main consumers are migrated and `@kommo-crm/linting/eslint` carries the full ruleset. Adding new subpaths such as `@kommo-crm/linting/stylelint` after `1.0.0` does not affect ESLint consumers and ships as a regular minor release.
+`1.0.0` is cut once the ESLint part stabilises — when the main consumers are migrated and `@kommo-crm/eslint-config` carries the full ruleset. Adding sibling packages such as `@kommo-crm/stylelint-config` after `1.0.0` does not affect ESLint consumers and ships independently.
 
 > If you’re unsure which bump applies, prefer the more conservative commit type (`fix:` over `feat:`) — a reviewer will adjust it before merge. The maintainer derives the version bump from the Conventional Commits accumulated since the last tag: `feat:` → minor, `fix:`/`perf:` → patch, `feat!:` or a `BREAKING CHANGE:` footer → major (during 0.x — minor).
 
@@ -89,15 +89,16 @@ If you’re only fixing a bug, it’s okay to submit a pull request right away b
 ## Requirements
 
 - Node.js 22+ (see `.nvmrc`) — required by `c8`-based coverage thresholds.
-- Yarn 1.x (see `packageManager` in `package.json`).
+- pnpm 9.x (see `packageManager` in `package.json`) — enable via `corepack enable`.
 
 ## Quick start
 
 ```bash
 nvm use
-yarn install
-yarn build
-yarn test
+corepack enable
+pnpm install
+pnpm build
+pnpm test
 ```
 
 ## Workflow
@@ -115,27 +116,29 @@ The `commitlint` CI job validates that every commit in your PR follows Conventio
 
 ## Scripts
 
-| Script                      | Purpose                                           |
-| --------------------------- | ------------------------------------------------- |
-| `yarn build`                | Build `dist/` via tsup and copy assets            |
-| `yarn dev`                  | tsup in watch mode                                |
-| `yarn lint`                 | Self-lint with our own ESLint config              |
-| `yarn lint:fix`             | Same, with autofix                                |
-| `yarn typecheck`            | `tsc --noEmit`                                    |
-| `yarn test`                 | Run tests via `node --test` + tsx                 |
-| `yarn test:coverage`        | Same, under `c8` with 90/85/90 thresholds         |
-| `yarn test:snapshot:update` | Regenerate `__tests__/.../*.errors.json` baseline |
-| `yarn format`               | Prettier across the repository                    |
-| `yarn commitlint`           | Validate commit messages (used by husky and CI)   |
+All scripts run from the repository root.
+
+| Script                                                        | Purpose                                         |
+| ------------------------------------------------------------- | ----------------------------------------------- |
+| `pnpm build`                                                  | Build all packages via turbo (tsup + assets)    |
+| `pnpm dev`                                                    | tsup watch mode for the eslint-config package   |
+| `pnpm lint`                                                   | Self-lint the repo with our own ESLint config   |
+| `pnpm lint:fix`                                               | Same, with autofix                              |
+| `pnpm typecheck`                                              | `tsc --noEmit` (via turbo)                      |
+| `pnpm test`                                                   | Run tests via `node --test` + tsx (via turbo)   |
+| `pnpm test:coverage`                                          | Same, under `c8` with 90/85/90 thresholds       |
+| `pnpm --filter @kommo-crm/eslint-config test:snapshot:update` | Regenerate `*.errors.json` baseline             |
+| `pnpm format`                                                 | Prettier across the repository                  |
+| `pnpm commitlint`                                             | Validate commit messages (used by husky and CI) |
 
 ## Updating lint snapshots
 
-`__tests__/eslint/fixtures/invalid.js.errors.json` and `invalid.tsx.errors.json` are ground-truth snapshots of what ESLint reports when the full preset (`base + typescript + react`) runs against the broad fixtures ported from our core projects. `snapshot.test.ts` fails on any diff.
+`packages/eslint-config/__tests__/fixtures/invalid.js.errors.json` and `invalid.tsx.errors.json` are ground-truth snapshots of what ESLint reports when the full preset (`base + typescript + react`) runs against the broad fixtures ported from our core projects. `snapshot.test.ts` fails on any diff.
 
 Regenerate them whenever you intentionally change a preset or bump a plugin version:
 
 ```bash
-yarn test:snapshot:update
+pnpm --filter @kommo-crm/eslint-config test:snapshot:update
 ```
 
 Review the diff, commit it together with the preset change.
@@ -147,16 +150,16 @@ We’ll review your pull request and either merge it, request changes to it, or 
 **Before submitting a pull request**, please:
 
 1. Fork the repository and create your branch from `main`.
-2. Run `yarn install` in the repository root.
-3. Make sure your code lints and types check: `yarn lint && yarn typecheck`.
-4. Make sure tests pass, including snapshots: `yarn test`.
+2. Run `pnpm install` in the repository root.
+3. Make sure your code lints and types check: `pnpm lint && pnpm typecheck`.
+4. Make sure tests pass, including snapshots: `pnpm test`.
 5. Make sure your commits follow [Conventional Commits](https://www.conventionalcommits.org/) — husky and CI will reject anything else.
 
 ## Releasing
 
 Releases are cut manually by maintainers. The full runbook lives in [`RELEASING.md`](../RELEASING.md). In short:
 
-1. Maintainer updates `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`), stages it, runs `npm version patch|minor|major`, and pushes the resulting commit and tag with `git push --follow-tags`.
+1. Maintainer updates `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`), stages it, runs `npm version patch|minor|major` in `packages/eslint-config`, and pushes the resulting commit and tag with `git push --follow-tags`.
 2. The `Release` workflow (`.github/workflows/release.yml`) triggers on the `vX.Y.Z` tag, runs `make verify`, publishes the package to npm (requires the `NPM_TOKEN` secret — must be an npm **Automation** token), and creates a GitHub Release with auto-generated notes.
 
 ## Breaking changes

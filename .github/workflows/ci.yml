@@ -24,17 +24,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: yarn
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run ${{ matrix.task }}
-        run: yarn ${{ matrix.task }}
+        run: pnpm ${{ matrix.task }}
 
   commitlint:
     name: Commit messages
@@ -48,14 +51,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: yarn
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Validate Conventional Commits
-        run: yarn commitlint --from origin/${{ github.base_ref }} --to HEAD --verbose
+        run: pnpm commitlint --from origin/${{ github.base_ref }} --to HEAD --verbose

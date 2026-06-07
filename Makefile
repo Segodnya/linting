@@ -11,47 +11,47 @@ help:
 
 # Install dependencies with a frozen lockfile
 install:
-	yarn install --frozen-lockfile
+	pnpm install --frozen-lockfile
 
-# Build the package (tsup + copy assets) into dist/
+# Build all packages into their dist/
 build:
-	yarn build
+	pnpm build
 
 # Run tsup in watch mode
 dev:
-	yarn dev
+	pnpm dev
 
 # Remove build artifacts
 clean:
-	rm -rf dist coverage
+	rm -rf packages/*/dist packages/*/coverage .turbo
 
-# Run ESLint
+# Run ESLint across the repo
 lint:
-	yarn lint
+	pnpm lint
 
 # Run ESLint with --fix
 fix:
-	yarn lint:fix
+	pnpm lint:fix
 
 # Detect unused files, dependencies, and exports
 knip:
-	yarn knip
+	pnpm knip
 
 # Type-check with tsc --noEmit
 typecheck:
-	yarn typecheck
+	pnpm typecheck
 
 # Run unit tests
 test:
-	yarn test
+	pnpm test
 
 # Run unit tests with V8 coverage on custom rules
 coverage:
-	yarn test:coverage
+	pnpm test:coverage
 
 # Full CI gate: lint + knip + typecheck + build + coverage (enforces threshold)
 verify: lint knip typecheck build coverage
 
 # Run Prettier across the repository
 format:
-	yarn format
+	pnpm format

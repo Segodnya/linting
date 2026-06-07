@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest a new rule, preset, option, or improvement to @kommo-crm/linting
+description: Suggest a new rule, preset, option, or improvement to @kommo-crm/eslint-config
 labels: ['Feature request', 'untriaged']
 body:
   - type: markdown

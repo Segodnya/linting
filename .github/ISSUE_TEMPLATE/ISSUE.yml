@@ -1,5 +1,5 @@
 name: Issue
-description: Report a problem with @kommo-crm/linting (a rule, a preset, types, or the docs)
+description: Report a problem with @kommo-crm/eslint-config (a rule, a preset, types, or the docs)
 labels: ['Bug', 'untriaged']
 body:
   - type: markdown
@@ -31,7 +31,7 @@ body:
         Minimal reproduction. Ideally include:
         - the offending source snippet (`.ts` / `.tsx` / `.js`),
         - the relevant fragment of your `eslint.config.mjs` (or `.eslintrc`),
-        - the command you ran (e.g. `yarn lint src/foo.ts`).
+        - the command you ran (e.g. `pnpm lint src/foo.ts`).
       render: markdown
     validations:
       required: true
@@ -46,7 +46,7 @@ body:
         - react
         - plugin (custom rules)
         - legacy (.eslintrc / ESLint 8)
-        - types (@kommo-crm/linting/eslint/types)
+        - types (@kommo-crm/eslint-config/types)
         - not sure
   - type: dropdown
     id: config-flavor
@@ -58,7 +58,7 @@ body:
   - type: input
     id: package-version
     attributes:
-      label: '@kommo-crm/linting version'
+      label: '@kommo-crm/eslint-config version'
       placeholder: e.g. 0.1.0
     validations:
       required: true
