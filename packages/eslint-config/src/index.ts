@@ -13,4 +13,3 @@ export interface PresetOptions {
 export { base } from './presets/base';
 export { typescript } from './presets/typescript';
 export { react } from './presets/react';
-export { plugin, PLUGIN_NAME } from './plugin';

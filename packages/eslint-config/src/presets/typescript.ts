@@ -2,7 +2,7 @@ import type { Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 import jsdoc from 'eslint-plugin-jsdoc';
 import type { PresetOptions } from '../index';
-import { PLUGIN_NAME } from '../plugin';
+import { PLUGIN_NAME } from '@kommo-crm/eslint-plugin';
 import { applyOverrides } from './shared';
 import {
   OMIT_TYPE_REFERENCE_SELECTORS,

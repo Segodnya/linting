@@ -1,5 +1,5 @@
 import { createRuleTester } from '../helpers/rule-tester';
-import { noDynamicImports } from '../../src/plugin/rules/no-dynamic-imports';
+import { noDynamicImports } from '../../src/rules/no-dynamic-imports';
 
 const tester = createRuleTester({
   languageOptions: {

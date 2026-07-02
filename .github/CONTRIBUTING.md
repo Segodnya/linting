@@ -36,7 +36,7 @@ The following sections detail what kinds of changes result in each of major, min
 
 ### Patch
 
-- Bug fix in a custom rule under `packages/eslint-config/src/plugin/rules/`
+- Bug fix in a custom rule under `packages/eslint-plugin/src/rules/`
 - Loosening a rule severity (e.g. `error` → `warn`)
 - Documentation, README, or CHANGELOG fixes
 - Internal refactor that does not change the rule output (verified by snapshot tests)

@@ -5,7 +5,8 @@ Shared linting configuration for Kommo projects, managed as a [pnpm](https://pnp
 
 ## Packages
 
-- [`@kommo-crm/eslint-config`](./packages/eslint-config) — shared ESLint flat-config presets.
+- [`@kommo-crm/eslint-config`](./packages/eslint-config) — shared ESLint flat-config presets (`base`, `typescript`, `react`).
+- [`@kommo-crm/eslint-plugin`](./packages/eslint-plugin) — the custom ESLint rules those presets consume, registered under the `kommo` namespace.
 
 More packages (e.g. a Stylelint config) will be added as separate workspaces.
 

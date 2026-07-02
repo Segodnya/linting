@@ -1,5 +1,5 @@
 import { createRuleTester } from '../helpers/rule-tester';
-import { noIncorrectJsdocComments } from '../../src/plugin/rules/no-incorrect-jsdoc-comments';
+import { noIncorrectJsdocComments } from '../../src/rules/no-incorrect-jsdoc-comments';
 
 const tester = createRuleTester({
   languageOptions: {

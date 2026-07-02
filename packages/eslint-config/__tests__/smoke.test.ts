@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { base, typescript, react, plugin } from '../src/index';
+import { base, typescript, react } from '../src/index';
 
 test('presets compose into a single flat-config array', () => {
   const config = [...base(), ...typescript(), ...react()];
@@ -38,10 +38,4 @@ test('react preset forwards rules override', () => {
     (last?.rules as Record<string, unknown>)['react/jsx-uses-react'],
     'off'
   );
-});
-
-test('plugin exposes meta and registered rules', () => {
-  assert.equal(plugin.meta?.name, '@kommo-crm/eslint-config');
-  assert.equal(typeof plugin.meta?.version, 'string');
-  assert.ok(Object.keys(plugin.rules ?? {}).length >= 5);
 });

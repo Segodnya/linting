@@ -1,5 +1,5 @@
 import { createRuleTester } from '../helpers/rule-tester';
-import { noExportAll } from '../../src/plugin/rules/no-export-all';
+import { noExportAll } from '../../src/rules/no-export-all';
 
 const tester = createRuleTester({
   languageOptions: {

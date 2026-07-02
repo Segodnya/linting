@@ -1,12 +1,14 @@
 import tseslint from 'typescript-eslint';
-import type { Linter } from 'eslint';
+import type { Linter, Rule } from 'eslint';
 
 import { createRuleTester } from '../helpers/rule-tester';
-import { noRestrictedSyntax } from '../../src/plugin/rules/no-restricted-syntax';
+import { rules } from '@kommo-crm/eslint-plugin';
 import {
   OMIT_TYPE_REFERENCE_SELECTORS,
   PARAM_DESTRUCTURING_SELECTORS,
 } from '../../src/presets/selectors';
+
+const noRestrictedSyntax = rules['no-restricted-syntax'] as Rule.RuleModule;
 
 const jsTester = createRuleTester({
   languageOptions: {

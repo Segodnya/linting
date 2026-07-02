@@ -6,7 +6,7 @@ import prettierPlugin from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 import type { PresetOptions } from '../index';
-import { plugin as kommoPlugin, PLUGIN_NAME } from '../plugin';
+import { plugin as kommoPlugin, PLUGIN_NAME } from '@kommo-crm/eslint-plugin';
 import { applyOverrides } from './shared';
 import { buildRestrictedSyntaxOptions } from './selectors';
 

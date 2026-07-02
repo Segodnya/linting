@@ -45,7 +45,7 @@ typecheck:
 test:
 	pnpm test
 
-# Run unit tests with V8 coverage on custom rules
+# Run unit tests with V8 coverage (presets in eslint-config, rules in eslint-plugin)
 coverage:
 	pnpm test:coverage
 

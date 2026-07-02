@@ -1,5 +1,5 @@
 import { createRuleTester } from '../helpers/rule-tester';
-import { noRestrictedSyntax } from '../../src/plugin/rules/no-restricted-syntax';
+import { noRestrictedSyntax } from '../../src/rules/no-restricted-syntax';
 
 const tester = createRuleTester({
   languageOptions: {

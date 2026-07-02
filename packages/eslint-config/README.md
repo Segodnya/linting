@@ -8,11 +8,11 @@ Shared ESLint configuration for Kommo projects, widgets, and open-source reposit
 
 The package ships the following exports:
 
-| Subpath                           | Purpose                                                              | Status   |
-| --------------------------------- | -------------------------------------------------------------------- | -------- |
-| `@kommo-crm/eslint-config`        | ESLint flat-config presets (`base`, `typescript`, `react`, `plugin`) | skeleton |
-| `@kommo-crm/eslint-config/legacy` | Legacy entry for `.eslintrc` (ESLint 8)                              | skeleton |
-| `@kommo-crm/eslint-config/types`  | Global TypeScript types (`DistributiveOmit` etc.)                    | skeleton |
+| Subpath                           | Purpose                                                    | Status   |
+| --------------------------------- | ---------------------------------------------------------- | -------- |
+| `@kommo-crm/eslint-config`        | ESLint flat-config presets (`base`, `typescript`, `react`) | skeleton |
+| `@kommo-crm/eslint-config/legacy` | Legacy entry for `.eslintrc` (ESLint 8)                    | skeleton |
+| `@kommo-crm/eslint-config/types`  | Global TypeScript types (`DistributiveOmit` etc.)          | skeleton |
 
 ## Installation
 
@@ -99,17 +99,18 @@ The full runbook lives in [`RELEASING.md`](../../RELEASING.md).
 
 ```text
 src/
-├── index.ts           # public API: base, typescript, react, plugin
+├── index.ts           # public API: base, typescript, react
 ├── presets/
 │   ├── base.ts
 │   ├── typescript.ts
 │   └── react.ts
-├── plugin/
-│   ├── index.ts       # ESLint.Plugin: { meta, rules }
-│   └── rules/         # custom rules live here
 └── types/
     └── global.d.ts    # DistributiveOmit
 ```
+
+The custom ESLint rules consumed by these presets live in a separate package,
+[`@kommo-crm/eslint-plugin`](../eslint-plugin), and are registered under the
+`kommo` namespace.
 
 `dist/legacy.cjs` (the ESLint 8 entry) is generated at build time by `scripts/build-legacy.mjs`.
 

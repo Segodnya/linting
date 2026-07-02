@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { plugin, rules } from '../src/plugin';
+import { plugin, rules } from '../src';
 
 test('plugin registers all 5 custom rules', () => {
   const expected = [
@@ -15,6 +15,6 @@ test('plugin registers all 5 custom rules', () => {
     assert.ok(rules[name], `rule ${name} must be registered`);
   }
 
-  assert.equal(plugin.meta?.name, '@kommo-crm/eslint-config');
+  assert.equal(plugin.meta?.name, '@kommo-crm/eslint-plugin');
   assert.equal(typeof plugin.meta?.version, 'string');
 });

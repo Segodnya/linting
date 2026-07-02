@@ -19,7 +19,7 @@
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { PLUGIN_NAME } from '../dist/index.mjs';
+import { PLUGIN_NAME } from '@kommo-crm/eslint-plugin';
 import { base, typescript, react } from '../dist/index.mjs';
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..');

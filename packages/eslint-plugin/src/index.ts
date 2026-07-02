@@ -1,5 +1,5 @@
 import type { ESLint, Rule } from 'eslint';
-import { name as pkgName, version as pkgVersion } from '../../package.json';
+import { name as pkgName, version as pkgVersion } from '../package.json';
 import { noExportAll } from './rules/no-export-all';
 import { noIncorrectJsdocComments } from './rules/no-incorrect-jsdoc-comments';
 import { noDynamicImports } from './rules/no-dynamic-imports';

@@ -2,7 +2,7 @@
 
 Step-by-step runbook for cutting a new version of any publishable package in this monorepo to the public npm registry. The push of an annotated tag is the only thing the publish workflow needs — everything else is hygiene.
 
-Each package is versioned and released **independently**: it owns its `package.json`, `CHANGELOG.md`, and tag. `@kommo-crm/eslint-config` is the only package today, but the same flow applies to every workspace under `packages/`.
+Each package is versioned and released **independently**: it owns its `package.json`, `CHANGELOG.md`, and tag. The publishable packages today are `@kommo-crm/eslint-config` and `@kommo-crm/eslint-plugin`, and the same flow applies to every workspace under `packages/`. Note that `@kommo-crm/eslint-config` depends on `@kommo-crm/eslint-plugin` (via `workspace:*`), so when a config change also needs new plugin behaviour, release the plugin first and bump the config's dependency to the published version.
 
 The commands below use a `PKG` variable so they work for whichever package you are releasing — set it once per session (the directory name under `packages/`):
 
