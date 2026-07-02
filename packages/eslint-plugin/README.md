@@ -19,13 +19,13 @@ The package exposes an ESLint flat-config plugin object plus its rule map:
 
 ### Rules
 
-| Rule                          | Description                                            |
-| ----------------------------- | ------------------------------------------------------ |
-| `no-export-all`               | Disallow `export * from` syntax                        |
-| `no-incorrect-jsdoc-comments` | Disallow malformed JSDoc block comments                |
-| `no-dynamic-imports`          | Disallow dynamic `import()` of consumer-supplied paths |
-| `no-restricted-syntax`        | Re-export of ESLint's built-in `no-restricted-syntax`  |
-| `no-restricted-imports`       | Re-export of ESLint's built-in `no-restricted-imports` |
+| Rule                          | Description                                                                |
+| ----------------------------- | -------------------------------------------------------------------------- |
+| `no-export-all`               | Disallow `export * from` syntax                                            |
+| `no-incorrect-jsdoc-comments` | Disallow malformed JSDoc block comments                                    |
+| `no-dynamic-imports`          | Disallow dynamic `import()` of consumer-supplied paths                     |
+| `no-restricted-syntax`        | Namespaced re-export of ESLint's built-in `no-restricted-syntax` (opt-in)  |
+| `no-restricted-imports`       | Namespaced re-export of ESLint's built-in `no-restricted-imports` (opt-in) |
 
 ## Installation
 

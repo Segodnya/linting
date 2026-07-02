@@ -159,8 +159,8 @@ We’ll review your pull request and either merge it, request changes to it, or 
 
 Releases are cut manually by maintainers. The full runbook lives in [`RELEASING.md`](../RELEASING.md). In short:
 
-1. Maintainer updates `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`), stages it, runs `npm version patch|minor|major` in `packages/eslint-config`, and pushes the resulting commit and tag with `git push --follow-tags`.
-2. The `Release` workflow (`.github/workflows/release.yml`) triggers on the `vX.Y.Z` tag, runs `make verify`, publishes the package to npm (requires the `NPM_TOKEN` secret — must be an npm **Automation** token), and creates a GitHub Release with auto-generated notes.
+1. Maintainer updates `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`), stages it, runs `npm version patch|minor|major --tag-version-prefix "$PKG@v"` in the target package (`PKG` being its npm name, so the tag is `<package>@vX.Y.Z`), and pushes the resulting commit and tag with `git push --follow-tags`.
+2. The `Release` workflow (`.github/workflows/release.yml`) triggers on the `<package>@vX.Y.Z` tag, runs `make verify`, publishes the package to npm (requires the `NPM_TOKEN` secret — must be an npm **Automation** token), and creates a GitHub Release with auto-generated notes.
 
 ## Breaking changes
 

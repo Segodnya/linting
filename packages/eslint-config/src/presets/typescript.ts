@@ -35,10 +35,15 @@ export const typescript = (options?: PresetOptions): Linter.Config[] => [
     name: '@kommo-crm/eslint-config/typescript/rules',
     rules: {
       /**
-       * tseslint.configs.recommended disables a few base rules on TS files
-       * (tsc catches them anyway). Kommo projects have historically turned
-       * them back on — we reassert the overrides here so the preset matches
-       * the legacy behavior.
+       * `tseslint.configs.recommended` pulls in the eslint-recommended layer,
+       * which re-sets several base rules on TS files: `no-unreachable` → off
+       * (tsc catches it) and `prefer-rest-params` → error, among others. Those
+       * tseslint blocks are spread before this one in the composition
+       * `[...base(), ...typescript()]`, so without re-asserting here `.ts`
+       * files would inherit tseslint's severities instead of the project's.
+       * We restore the severities Kommo has historically used —
+       * `no-unreachable` back to error and `prefer-rest-params` down to warn.
+       * The regression test in __tests__/presets/typescript.test.ts pins this.
        */
       'no-unreachable': 'error',
       'no-const-assign': 'error',

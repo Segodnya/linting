@@ -2,6 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { ESLint } from 'eslint';
+
 import { base, typescript } from '../../src';
 import { disablePrettier, lintFixture } from '../helpers/lint';
 
@@ -31,4 +33,26 @@ test('typescript preset: invalid.ts — naming-convention, no-explicit-any, no-n
   assert.ok(uniqueIds.has('@typescript-eslint/naming-convention'));
   assert.ok(uniqueIds.has('@typescript-eslint/no-explicit-any'));
   assert.ok(uniqueIds.has('@typescript-eslint/no-non-null-assertion'));
+});
+
+test('typescript preset: re-asserts severities that the eslint-recommended layer overrides on .ts', async () => {
+  const eslint = new ESLint({
+    overrideConfigFile: true,
+    overrideConfig: [...base(), ...typescript()],
+  });
+  const cfg = await eslint.calculateConfigForFile(
+    resolve(fixturesDir, 'valid.ts')
+  );
+
+  /**
+   * tseslint's eslint-recommended layer sets no-unreachable → off and
+   * prefer-rest-params → error; the typescript preset restores the project's
+   * severities. If someone drops the re-assert, these flip and the test fails.
+   */
+  assert.equal(cfg.rules['no-unreachable'][0], 2, 'no-unreachable must be error');
+  assert.equal(
+    cfg.rules['prefer-rest-params'][0],
+    1,
+    'prefer-rest-params must be warn'
+  );
 });
