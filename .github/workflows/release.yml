@@ -1,0 +1,79 @@
+name: Release
+
+on:
+  push:
+    tags:
+      # Per-package release tags: <package>@vX.Y.Z (e.g. eslint-config@v0.1.1).
+      # The package directory under packages/ is resolved from the tag.
+      - '*@v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # NPM_TOKEN must be an Automation token (npmjs.com → Access Tokens →
+      # Generate New Token → Automation). Publish/Read&Publish tokens that
+      # require 2FA OTP cannot be used in CI — npm publish will fail with EOTP.
+      # Scope: must have publish rights for @kommo-crm.
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Skip husky install during install — git hooks are useless in CI
+      # and may break on minimal runners.
+      HUSKY: 0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Resolve package and version from tag
+        run: |
+          # Strict tag contract: <package>@vX.Y.Z
+          #   package — kebab-case, no "@" (matches a directory under packages/)
+          #   version — semver, optional prerelease/build metadata
+          TAG="$GITHUB_REF_NAME"
+          re='^([a-z0-9]+(-[a-z0-9]+)*)@v([0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)?)$'
+          if [[ ! "$TAG" =~ $re ]]; then
+            echo "::error::tag '$TAG' must be <package>@vX.Y.Z (kebab-case package, semver version)"
+            exit 1
+          fi
+          PKG="${BASH_REMATCH[1]}"
+          TAG_VERSION="${BASH_REMATCH[3]}"
+          if [ ! -f "./packages/$PKG/package.json" ]; then
+            echo "::error::no package at packages/$PKG (resolved from tag $TAG)"
+            exit 1
+          fi
+          PKG_NAME=$(node -p "require('./packages/$PKG/package.json').name")
+          PKG_VERSION=$(node -p "require('./packages/$PKG/package.json').version")
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::package version ($PKG_VERSION) does not match tag ($TAG_VERSION)"
+            exit 1
+          fi
+          echo "PKG_NAME=$PKG_NAME" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify (lint + knip + typecheck + build + coverage)
+        run: make verify
+
+      - name: Publish to npm
+        run: pnpm publish --filter "$PKG_NAME" --access public --no-git-checks
+
+      - name: Create GitHub Release
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes

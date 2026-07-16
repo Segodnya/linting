@@ -1,0 +1,89 @@
+name: Issue
+description: Report a problem with @kommo-crm/eslint-config (a rule, a preset, types, or the docs)
+labels: ['Bug', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use [this template](https://github.com/kommo-crm/linting/issues/new?labels=Feature+request&template=FEATURE_REQUEST.yml) for feature requests (new rule, new preset, new option).
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Provide a short description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What should ESLint report (or not report) for the snippet below?
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What does ESLint report instead? Paste the exact CLI output if possible.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: |
+        Minimal reproduction. Ideally include:
+        - the offending source snippet (`.ts` / `.tsx` / `.js`),
+        - the relevant fragment of your `eslint.config.mjs` (or `.eslintrc`),
+        - the command you ran (e.g. `pnpm lint src/foo.ts`).
+      render: markdown
+    validations:
+      required: true
+  - type: dropdown
+    id: preset
+    attributes:
+      label: Which preset is involved?
+      multiple: true
+      options:
+        - base
+        - typescript
+        - react
+        - plugin (custom rules)
+        - legacy (.eslintrc / ESLint 8)
+        - types (@kommo-crm/eslint-config/types)
+        - not sure
+  - type: dropdown
+    id: config-flavor
+    attributes:
+      label: Config flavor
+      options:
+        - Flat config (ESLint 9, eslint.config.mjs)
+        - Legacy config (ESLint 8, .eslintrc)
+  - type: input
+    id: package-version
+    attributes:
+      label: '@kommo-crm/eslint-config version'
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: eslint-version
+    attributes:
+      label: ESLint version
+      placeholder: e.g. 9.34.0
+    validations:
+      required: true
+  - type: input
+    id: typescript-version
+    attributes:
+      label: TypeScript version
+      description: Leave blank if not using the `typescript` preset.
+      placeholder: e.g. 5.5.4
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: e.g. 22.11.0
+    validations:
+      required: true
+  - type: input
+    id: package-manager
+    attributes:
+      label: Package manager
+      placeholder: e.g. yarn 1.22.22 / npm 10 / pnpm 9
