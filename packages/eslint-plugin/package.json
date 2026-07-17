@@ -43,8 +43,8 @@
     "test:coverage": "c8 --config .c8rc.json node --import tsx --test \"__tests__/**/*.test.ts\""
   },
   "peerDependencies": {
-    "eslint": ">=9.0.0",
-    "typescript": ">=5.0.0"
+    "eslint": "^8.57.0 || ^9.7.0",
+    "typescript": ">=4.8.4 <6.1.0"
   },
   "devDependencies": {
     "@types/node": "22.0.0",

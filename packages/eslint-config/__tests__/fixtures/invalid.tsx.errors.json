@@ -399,7 +399,7 @@
     "messageId": "object"
   },
   {
-    "ruleId": "no-unused-expressions",
+    "ruleId": "@typescript-eslint/no-unused-expressions",
     "line": 161,
     "column": 1,
     "severity": 2,
@@ -1400,11 +1400,11 @@
     "messageId": "unusedVar"
   },
   {
-    "ruleId": "@typescript-eslint/ban-types",
+    "ruleId": "@typescript-eslint/no-empty-object-type",
     "line": 471,
     "column": 26,
     "severity": 2,
-    "messageId": "bannedTypeMessage"
+    "messageId": "noEmptyObject"
   },
   {
     "ruleId": "@typescript-eslint/naming-convention",
@@ -1426,6 +1426,13 @@
     "column": 11,
     "severity": 2,
     "messageId": "doesNotMatchFormat"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-empty-object-type",
+    "line": 473,
+    "column": 11,
+    "severity": 2,
+    "messageId": "noEmptyInterface"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",

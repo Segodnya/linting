@@ -490,7 +490,7 @@
     "messageId": "object"
   },
   {
-    "ruleId": "no-unused-expressions",
+    "ruleId": "@typescript-eslint/no-unused-expressions",
     "line": 156,
     "column": 1,
     "severity": 2,

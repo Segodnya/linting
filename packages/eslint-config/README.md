@@ -22,6 +22,16 @@ pnpm add -D @kommo-crm/eslint-config eslint typescript
 
 `eslint` and `typescript` are peer dependencies — the package does not pull them in.
 
+### Requirements
+
+| Peer         | Supported range       | Notes                                                         |
+| ------------ | --------------------- | ------------------------------------------------------------- |
+| `eslint`     | `^8.57.0 \|\| ^9.7.0` | 8.57+ via flat config (`ESLINT_USE_FLAT_CONFIG`); 9.7+ native |
+| `typescript` | `>=4.8.4 <6.1.0`      | Upper bound follows bundled `typescript-eslint`               |
+
+These ranges are the intersection of what the bundled plugins (`typescript-eslint`,
+`eslint-plugin-react`, `eslint-plugin-react-hooks`, …) actually support.
+
 ## Usage — ESLint 9 (flat config)
 
 ```js
@@ -60,7 +70,26 @@ To pull in `DistributiveOmit` and other ambient types, add the `types` subpath t
 }
 ```
 
-## Usage — ESLint 8 (`.eslintrc`)
+## Usage — ESLint 8
+
+> **⚠️ On ESLint 8, use flat config, not `.eslintrc`.** ESLint 8.57+ supports flat
+> config, and it is the only reliable way to consume this package on ESLint 8.
+
+ESLint 8.57 can load a flat config via the `ESLINT_USE_FLAT_CONFIG` flag — same
+config as ESLint 9:
+
+```js
+// eslint.config.mjs
+import { base, typescript, react } from '@kommo-crm/eslint-config';
+
+export default [...base(), ...typescript(), ...react()];
+```
+
+```bash
+ESLINT_USE_FLAT_CONFIG=true eslint 'src/**/*.{ts,tsx}'
+```
+
+### `.eslintrc` (legacy, deprecated)
 
 ```js
 // .eslintrc.js
@@ -69,8 +98,13 @@ module.exports = {
 };
 ```
 
-The legacy entry is auto-generated from the flat-config presets on every build. It will be
-deprecated once all projects migrate to flat config.
+> **Known limitation.** The `/legacy` entry references its plugins by name, and
+> ESLint's eslintrc engine resolves them from _your_ project root — not from
+> inside this package. If your dependency tree conflicts on any bundled plugin
+> (commonly `prettier` / `eslint-plugin-prettier`), the package manager nests our
+> copy and ESLint fails with `couldn't find the plugin "..."`. This is fragile by
+> design and not reliably fixable from your side — prefer the flat config above.
+> The `/legacy` entry is deprecated and will be removed in a future release.
 
 ## Development
 
