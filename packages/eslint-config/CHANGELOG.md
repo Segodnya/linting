@@ -2,6 +2,12 @@
 
 All notable changes to this package are documented in this file. Format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- `react` preset: `react/boolean-prop-naming` now accepts `asChild` — the Radix/Slot escape hatch prop, whose name is dictated by the pattern ([#6](https://github.com/kommo-crm/linting/issues/6)).
+
 ## [0.1.0] 16/07/26
 
 ### Added
