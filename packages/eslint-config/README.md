@@ -89,7 +89,7 @@ pnpm dev         # tsup --watch
 
 ### Releases
 
-Releases are cut manually by maintainers and triggered by pushing an annotated `vX.Y.Z` tag. The release workflow then runs `make verify`, publishes to npm with `pnpm publish`, and creates a GitHub Release.
+Releases are cut manually by maintainers and triggered by pushing an annotated `eslint-config@vX.Y.Z` tag. Each package in the monorepo is versioned and released independently, so the tag is namespaced with the package directory name. The release workflow resolves the package from the tag prefix, then runs `make verify`, publishes to npm via trusted publishing (OIDC), and creates a GitHub Release.
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/) — `feat:`, `fix:`, `feat!:` (breaking), etc. — enforced by commitlint locally and in CI. The maintainer uses these types to choose the `patch`/`minor`/`major` bump and to hand-curate `CHANGELOG.md`, which is the source of truth for what shipped in each version.
 

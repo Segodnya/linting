@@ -1,0 +1,56 @@
+name: Setup
+description: pnpm + Node from .nvmrc + a frozen install, optionally followed by the full verify gate.
+
+# Every job in every workflow enters through here, so the toolchain versions
+# live in exactly one file: bumping actions/setup-node or adding a runner-level
+# guard is a one-line change instead of a three-place grep.
+
+inputs:
+  verify:
+    description: Run `make verify` (lint + knip + typecheck + build + coverage) after installing.
+    required: false
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        # No `registry-url` on purpose. It would write an .npmrc with a
+        # `${NODE_AUTH_TOKEN}` placeholder, and npm does NOT drop that line
+        # when the variable is unset — it sends `Authorization: Bearer
+        # ${NODE_AUTH_TOKEN}` literally, so the OIDC exchange never happens
+        # and the registry answers 404. npmjs.org is the default registry
+        # anyway; publishing needs no .npmrc at all.
+        node-version-file: .nvmrc
+        cache: pnpm
+
+    # Guards the toolchain this action just installed, so a `.nvmrc` downgrade
+    # fails on the PR that introduces it rather than months later on a release
+    # tag. Below 11.5.1 npm publishes anonymously and the registry answers 404
+    # "not found" rather than an auth error, which sends you hunting the wrong
+    # bug. Runs before the install so it costs nothing when it fires.
+    - name: Assert npm supports trusted publishing
+      shell: bash
+      run: |
+        NPM_VERSION=$(npm -v)
+        if [ "$(printf '%s\n11.5.1\n' "$NPM_VERSION" | sort -V | head -1)" != "11.5.1" ]; then
+          echo "::error::npm $NPM_VERSION < 11.5.1 — OIDC trusted publishing unsupported; raise .nvmrc"
+          exit 1
+        fi
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    # Opt-in so lightweight jobs (commitlint) skip it, but when it runs it is
+    # the same Makefile target CI and the release workflow both gate on — they
+    # cannot drift, because there is only one call site left.
+    - name: Verify (lint + knip + typecheck + build + coverage)
+      if: inputs.verify == 'true'
+      shell: bash
+      run: make verify

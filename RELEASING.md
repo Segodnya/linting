@@ -14,17 +14,28 @@ The package version lives in `packages/$PKG/package.json` (not the workspace roo
 
 ## Prerequisites (one-time)
 
-- An npm account with publish rights for the `@kommo-crm` scope.
-- An npm **Automation** access token stored as the `NPM_TOKEN` repository secret.
+- A trusted publisher registered on npm for the package — see below.
+- An npm account with publish rights for the `@kommo-crm` scope (only for the manual fallback and for bootstrapping brand-new packages).
 - The CI workflow (`.github/workflows/ci.yml`) is green on `main`.
 - The release workflow (`.github/workflows/release.yml`) exists and is enabled.
 
-### First-time token setup
+### Trusted publisher setup (one-time per package)
 
-1. Generate a token at <https://www.npmjs.com/settings/~/tokens> → **Generate New Token** → **Automation**.
-   - **Important:** the token type must be **Automation**, not **Publish** or **Read & Publish**. The latter two require a 2FA OTP at publish time and will fail in CI.
-   - The token is shown only once — copy it to a password manager immediately.
-2. In GitHub: **Settings → Secrets and variables → Actions → New repository secret** → name `NPM_TOKEN`, value the token.
+Publishing runs on **trusted publishing (OIDC)**: the workflow mints a short-lived OIDC token, npm exchanges it for an ephemeral publish token, and the package goes out. There is no `NPM_TOKEN` secret and no long-lived credential to leak or rotate. As a bonus, npm generates [provenance attestations](https://docs.npmjs.com/generating-provenance-statements/) automatically, so published versions carry a "Built and signed on GitHub Actions" badge.
+
+Register the publisher at npmjs.com → the package → **Settings** → **Trusted Publisher**:
+
+| Field             | Value                                                  |
+| ----------------- | ------------------------------------------------------ |
+| Publisher         | GitHub Actions                                         |
+| Organization      | `kommo-crm`                                            |
+| Repository        | `linting`                                              |
+| Workflow filename | `release.yml` — filename only, no path, case-sensitive |
+| Environment       | leave empty                                            |
+
+npm does **not** validate this on save, so a typo only surfaces as a `404` at publish time.
+
+> **A brand-new package cannot bootstrap itself.** The Trusted Publisher settings page only appears once the package exists on the registry, so the very first version of a new package has to be published by hand via the [manual fallback](#manual-fallback) — then register the publisher and every subsequent release is credential-free. This is a known npm limitation, tracked in [npm/cli#8544](https://github.com/npm/cli/issues/8544).
 
 ## Routine release (every version)
 
@@ -94,23 +105,29 @@ Avoid `git tag -d` + force-push gymnastics on a public tag. The tag is the audit
 
 ## Manual fallback
 
-If the release workflow is unavailable (CI down, secrets rotated):
+Two cases need this: the release workflow is unavailable (CI down), or you are publishing the **first ever** version of a new package, which trusted publishing cannot do.
 
 ```sh
+npm login # interactive, 2FA
 pnpm install --frozen-lockfile
 make verify
-pnpm publish --filter "@kommo-crm/$PKG" --access public --otp <YOUR_OTP>
+pnpm publish --filter "@kommo-crm/$PKG" --access public --no-git-checks --otp <YOUR_OTP>
 ```
 
-Use only as an emergency path; CI publishing is the source of truth.
+Publish from `pnpm`, not `npm` — `pnpm` rewrites `workspace:*` dependencies to real versions when packing, whereas `npm` would ship the literal string and break installs.
+
+`--no-git-checks` is required, not optional: this path is normally run from a checked-out release tag, and `pnpm publish` otherwise refuses on a detached `HEAD` ("branch is not on main") before it ever reaches the registry.
+
+Use only as an emergency path; CI publishing is the source of truth. After bootstrapping a new package this way, register its [trusted publisher](#trusted-publisher-setup-one-time-per-package) so later releases go through CI.
 
 ## What can go wrong
 
-- **`npm publish` rejects with `EOTP`** — token is `Publish`/`Read & Publish` (2FA-required), not `Automation`. Regenerate the token as **Automation** and update the `NPM_TOKEN` secret.
-- **`npm publish` rejects with `403 Forbidden`** — token does not have publish rights for the `@kommo-crm` scope. Ensure it is owned by an account with maintainer access on the scope.
+- **`npm publish` rejects with `404 Not Found`** — almost always authentication, not a missing package: npm answers `404` rather than `403` so it does not leak which packages exist. Check, in order: the package has a trusted publisher registered; the workflow filename there matches `release.yml` byte for byte; the job still declares `id-token: write`; `repository.url` in `packages/$PKG/package.json` still points at this repo; no `registry-url:` crept back into a `setup-node` step (see below).
+- **The `setup-node` step in `.github/actions/setup/action.yml` regained `registry-url:`** — this silently breaks trusted publishing. `registry-url` writes an `.npmrc` line `//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}`, and npm does **not** drop that line when the variable is unset: it sends `Authorization: Bearer ${NODE_AUTH_TOKEN}` verbatim, so the OIDC exchange never runs and the registry answers `404`. npmjs.org is the default registry, so publishing needs no `.npmrc` at all — leave `registry-url` off.
+- **`npm publish` rejects with `EOTP`** — the OIDC exchange did not happen and npm fell back to interactive auth. Most likely `.nvmrc` was downgraded below Node 24 so the runner is on npm < 11.5.1 (the `Assert npm supports trusted publishing` step in `.github/actions/setup` should have caught this on the PR that downgraded it), or the package has no trusted publisher yet — a brand-new package needs the [manual fallback](#manual-fallback) first.
 - **`npm publish` rejects with `cannot publish over previous version`** — tag re-used (npm versions are immutable). Bump to the next patch and re-tag.
 - **Release workflow fails on `Resolve package and version from tag`** — tag pushed without bumping the package's `package.json`, or before the bump. Re-run `npm version X.Y.Z --tag-version-prefix "$PKG@v"` in `packages/$PKG` and push again.
 - **Release workflow does not trigger at all** — tag is a bare `vX.Y.Z` (missing the `<package>@` prefix the trigger needs). Re-tag as `<package>@vX.Y.Z` (set `--tag-version-prefix`) and push again.
 - **Release workflow fails with `no package at packages/<name>`** — tag prefix does not match a directory under `packages/`. Use the directory name (e.g. `eslint-config`), not the npm scope, as the prefix.
-- **Release workflow can't find `NPM_TOKEN`** — secret missing or scoped to a fork. Add it under repository **Settings → Secrets and variables → Actions**.
+- **Release triggered from a fork** — OIDC claims carry the fork's repository, which will not match the trusted publisher. Releases must run from `kommo-crm/linting`.
 - **`make verify` fails in CI but passes locally** — coverage/lint drift on a different Node version. Match `.nvmrc` locally (`nvm use`) and re-run `make verify`.

@@ -1,4 +1,14 @@
 name: Release
+#
+# Publishes to npm via trusted publishing (OIDC) — no NPM_TOKEN involved.
+# Setup and troubleshooting: ../../RELEASING.md
+#
+# Each package's trusted publisher on npmjs.com pins this file *by name*, so
+# renaming it breaks every release until those entries are updated to match.
+#
+# Toolchain setup (pnpm, Node, install, `make verify`) lives in the shared
+# ../actions/setup composite — including the `registry-url` trap that silently
+# breaks OIDC, documented there.
 
 on:
   push:
@@ -8,18 +18,17 @@ on:
       - '*@v*.*.*'
 
 permissions:
+  # contents: write — for `gh release create`.
   contents: write
+  # id-token: write — lets the job mint the OIDC token npm exchanges for a
+  # short-lived publish token. Publishing fails without it.
+  id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      # NPM_TOKEN must be an Automation token (npmjs.com → Access Tokens →
-      # Generate New Token → Automation). Publish/Read&Publish tokens that
-      # require 2FA OTP cannot be used in CI — npm publish will fail with EOTP.
-      # Scope: must have publish rights for @kommo-crm.
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Skip husky install during install — git hooks are useless in CI
       # and may break on minimal runners.
@@ -31,23 +40,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-          registry-url: https://registry.npmjs.org
-
+      # Deliberately ahead of Setup: a malformed tag or a version mismatch is
+      # the cheapest failure in this workflow, so it must not wait behind an
+      # install and a full `make verify`. Reads the manifest with jq (present on
+      # every GitHub runner) rather than node, which keeps it setup-free.
       - name: Resolve package and version from tag
         run: |
           # Strict tag contract: <package>@vX.Y.Z
           #   package — kebab-case, no "@" (matches a directory under packages/)
-          #   version — semver, optional prerelease/build metadata
+          #   version — plain semver; prereleases are rejected here because the
+          #   publish step below has no --tag and would push them to "latest"
           TAG="$GITHUB_REF_NAME"
-          re='^([a-z0-9]+(-[a-z0-9]+)*)@v([0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)?)$'
+          re='^([a-z0-9]+(-[a-z0-9]+)*)@v([0-9]+\.[0-9]+\.[0-9]+)$'
           if [[ ! "$TAG" =~ $re ]]; then
             echo "::error::tag '$TAG' must be <package>@vX.Y.Z (kebab-case package, semver version)"
             exit 1
@@ -58,22 +62,34 @@ jobs:
             echo "::error::no package at packages/$PKG (resolved from tag $TAG)"
             exit 1
           fi
-          PKG_NAME=$(node -p "require('./packages/$PKG/package.json').name")
-          PKG_VERSION=$(node -p "require('./packages/$PKG/package.json').version")
+          PKG_VERSION=$(jq -r .version "./packages/$PKG/package.json")
           if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
             echo "::error::package version ($PKG_VERSION) does not match tag ($TAG_VERSION)"
             exit 1
           fi
-          echo "PKG_NAME=$PKG_NAME" >> "$GITHUB_ENV"
+          echo "PKG=$PKG" >> "$GITHUB_ENV"
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Verify (lint + knip + typecheck + build + coverage)
-        run: make verify
+      - name: Setup and verify
+        uses: ./.github/actions/setup
+        with:
+          verify: 'true'
 
       - name: Publish to npm
-        run: pnpm publish --filter "$PKG_NAME" --access public --no-git-checks
+        # `shell: bash` for pipefail — the default `bash -e` would swallow a
+        # pnpm pack failure behind `tail`'s exit 0 and publish an empty path.
+        shell: bash
+        # Split in two on purpose: pnpm packs, npm publishes.
+        #   pnpm — resolves `workspace:*` deps to real versions when packing;
+        #          npm would ship the literal string and break installs.
+        #   npm  — pnpm 9 has no OIDC of its own, it just shells out to the
+        #          system npm. Calling npm directly keeps that explicit.
+        # Provenance attestations are automatic here, `--provenance` is not needed.
+        run: |
+          TARBALL=$(pnpm --dir "packages/$PKG" pack --pack-destination "$RUNNER_TEMP" | tail -1)
+          # `--access public` duplicates publishConfig in the manifest, but a
+          # scoped package defaults to private and this path is not one to be
+          # clever on.
+          npm publish "$TARBALL" --access public
 
       - name: Create GitHub Release
         run: gh release create "$GITHUB_REF_NAME" --generate-notes

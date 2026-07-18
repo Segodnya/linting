@@ -88,7 +88,7 @@ If you’re only fixing a bug, it’s okay to submit a pull request right away b
 
 ## Requirements
 
-- Node.js 22+ (see `.nvmrc`) — required by `c8`-based coverage thresholds.
+- Node.js 24 (`nvm use`, see `.nvmrc`). The packages declare `engines: node >=22` for consumers, but CI only ever builds and tests the version in `.nvmrc` — nothing verifies Node 22, so treat that floor as a promise to consumers rather than a tested configuration. CI and publishing pin 24 because trusted publishing needs the npm 11.5.1+ it bundles.
 - pnpm 9.x (see `packageManager` in `package.json`) — enable via `corepack enable`.
 
 ## Quick start
@@ -155,12 +155,14 @@ We’ll review your pull request and either merge it, request changes to it, or 
 4. Make sure tests pass, including snapshots: `pnpm test`.
 5. Make sure your commits follow [Conventional Commits](https://www.conventionalcommits.org/) — husky and CI will reject anything else.
 
+CI reports a single required status check, `verify`, which runs `make verify` (lint + knip + typecheck + build + coverage) — the same target the release workflow gates on. Pull requests additionally get a `Commit messages` check.
+
 ## Releasing
 
 Releases are cut manually by maintainers. The full runbook lives in [`RELEASING.md`](../RELEASING.md). In short:
 
-1. Maintainer updates `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`), stages it, runs `npm version patch|minor|major --tag-version-prefix "$PKG@v"` in the target package (`PKG` being its npm name, so the tag is `<package>@vX.Y.Z`), and pushes the resulting commit and tag with `git push --follow-tags`.
-2. The `Release` workflow (`.github/workflows/release.yml`) triggers on the `<package>@vX.Y.Z` tag, runs `make verify`, publishes the package to npm (requires the `NPM_TOKEN` secret — must be an npm **Automation** token), and creates a GitHub Release with auto-generated notes.
+1. Maintainer updates `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`), stages it, runs `npm version patch|minor|major --tag-version-prefix "$PKG@v"` in the target package (`PKG` being its directory name under `packages/`, e.g. `eslint-config`, so the tag is `<package>@vX.Y.Z`), and pushes the resulting commit and tag with `git push --follow-tags`.
+2. The `Release` workflow (`.github/workflows/release.yml`) triggers on the `<package>@vX.Y.Z` tag, runs `make verify`, publishes the package to npm via trusted publishing (OIDC — no `NPM_TOKEN` secret involved), and creates a GitHub Release with auto-generated notes.
 
 ## Breaking changes
 
