@@ -3,10 +3,15 @@ interface Props {
    * Visibility flag.
    */
   isVisible: boolean;
+  /**
+   * Render the child element instead of the default wrapper.
+   */
+  asChild?: boolean;
 }
 
 export const Widget = (props: Props) => {
-  const { isVisible } = props;
+  const { isVisible, asChild = false } = props;
+  const Comp = asChild ? 'span' : 'div';
 
-  return <div>{isVisible ? <span /> : null}</div>;
+  return <Comp>{isVisible ? <span /> : null}</Comp>;
 };
