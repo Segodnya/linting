@@ -12,6 +12,7 @@ All notable changes to this package are documented in this file. Format follows 
 
 - Bumped `typescript-eslint` 7.17.0 → 8.64.0 (ESLint 9 support). This renames `@typescript-eslint/ban-types` → `no-empty-object-type` and switches to the type-aware `@typescript-eslint/no-unused-expressions`.
 - Bumped `eslint-plugin-react-hooks` 4.6.2 → 5.2.0 and `eslint-plugin-react` 7.35.0 → 7.37.5 for ESLint 9 / `typescript-eslint@8` parser compatibility (restores `react/boolean-prop-naming` on typed props).
+- `react` preset: `react/boolean-prop-naming` now accepts `asChild` — the Radix/Slot escape hatch prop, whose name is dictated by the pattern ([#6](https://github.com/kommo-crm/linting/issues/6)).
 
 ### Deprecated
 

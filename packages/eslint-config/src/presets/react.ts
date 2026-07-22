@@ -45,7 +45,13 @@ export const react = (options?: PresetOptions): Linter.Config[] => [
       'react/hook-use-state': 'error',
       'react/boolean-prop-naming': [
         'error',
-        { rule: '^(are|is|have|has|should|must|with)[A-Z]([A-Za-z0-9]?)+' },
+        {
+          /**
+           * `asChild` is the Radix/Slot escape hatch — its name is dictated by
+           * the pattern, not by us, so it is exempt from the prefix convention.
+           */
+          rule: '^asChild$|^(are|is|have|has|should|must|with)[A-Z]([A-Za-z0-9]?)+',
+        },
       ],
 
       'react-hooks/rules-of-hooks': 'off',
