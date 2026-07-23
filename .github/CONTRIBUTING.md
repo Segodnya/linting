@@ -88,7 +88,7 @@ If you’re only fixing a bug, it’s okay to submit a pull request right away b
 
 ## Requirements
 
-- Node.js 24 (`nvm use`, see `.nvmrc`). The packages declare `engines: node >=22` for consumers, but CI only ever builds and tests the version in `.nvmrc` — nothing verifies Node 22, so treat that floor as a promise to consumers rather than a tested configuration. CI and publishing pin 24 because trusted publishing needs the npm 11.5.1+ it bundles.
+- Node.js 24 (`nvm use`, see `.nvmrc`). The packages declare `engines: node >=22` for consumers, but CI only ever builds and tests the version in `.nvmrc` — nothing verifies Node 22, so treat that floor as a promise to consumers rather than a tested configuration. CI and publishing pin 24 because trusted publishing needs npm 11.5.1+ (shipped by recent 24.x; a runtime guard enforces it).
 - pnpm 9.x (see `packageManager` in `package.json`) — enable via `corepack enable`.
 
 ## Quick start
@@ -110,7 +110,7 @@ pnpm test
    - `feat: …` — new rule, new preset, new option
    - `feat!: …` or `BREAKING CHANGE:` footer — breaking change after 1.0.0
    - `docs:`, `chore:`, `refactor:`, `test:`, `build:`, `ci:` — non-release-bumping changes
-4. Make sure CI is green (`lint`, `typecheck`, `build`, `test`, `knip`, `commitlint`).
+4. Make sure CI is green — the required `verify` check (lint + knip + typecheck + build + coverage) plus the `Commit messages` check on PRs.
 
 The `commitlint` CI job validates that every commit in your PR follows Conventional Commits — a husky `commit-msg` hook enforces it locally as well. Commits that don’t match a release-bumping type (`feat`/`fix`/`perf`) are still allowed; they simply don’t influence the next version bump and typically aren’t called out in `CHANGELOG.md`.
 

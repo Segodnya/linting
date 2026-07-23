@@ -75,9 +75,8 @@ jobs:
           verify: 'true'
 
       - name: Publish to npm
-        # `shell: bash` for pipefail — the default `bash -e` would swallow a
-        # pnpm pack failure behind `tail`'s exit 0 and publish an empty path.
-        shell: bash
+        # GitHub's default shell is `bash -eo pipefail`, so a pnpm pack failure
+        # won't be masked by `tail`'s exit 0 and publish an empty path.
         # Split in two on purpose: pnpm packs, npm publishes.
         #   pnpm — resolves `workspace:*` deps to real versions when packing;
         #          npm would ship the literal string and break installs.
